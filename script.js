@@ -1,12 +1,25 @@
-function myMenuFunction() {
-    var menuBth = document.getElementById("myNavMenu");
-    if (menuBth.className === "nav-menu") {
-        menuBth.className += "responsive";
-    } else {
-        menuBth.className = "nav-menu";
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll(".nav-link");
 
+    navLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+            // Remove active class from all links
+            navLinks.forEach((nav) => nav.classList.remove("active-link"));
+            
+            // Add active class to the clicked link
+            this.classList.add("active-link");
+
+            // Close mobile menu after clicking a link
+            document.getElementById("myNavMenu").classList.remove("responsive");
+        });
+    });
+});
+
+function myMenuFunction() {
+    var menuBtn = document.getElementById("myNavMenu");
+    menuBtn.classList.toggle("responsive"); 
 }
+
 
 //Dark mode-
 const body = document.querySelector("body"),
@@ -166,5 +179,5 @@ let slideInterval = setInterval(autoSlide, 5000);
 // Stop auto-slide on hover (optional)
 prevBtn.addEventListener("mouseenter", () => clearInterval(slideInterval));
 nextBtn.addEventListener("mouseenter", () => clearInterval(slideInterval));
-prevBtn.addEventListener("mouseleave", () => slideInterval = setInterval(autoSlide, 5000));
-nextBtn.addEventListener("mouseleave", () => slideInterval = setInterval(autoSlide, 5000));
+prevBtn.addEventListener("mouseleave", () => slideInterval = setInterval(autoSlide, 3000));
+nextBtn.addEventListener("mouseleave", () => slideInterval = setInterval(autoSlide, 3000));
