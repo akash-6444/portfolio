@@ -128,6 +128,37 @@ nav {
     height: 2px;
     background: var(--first-color);
 }
+@media (max-width: 768px) {
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--nav-color);
+        flex-direction: column;
+        text-align: center;
+        display: none;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-menu .nav_list {
+        margin: 10px 0;
+    }
+
+    /* Show menu when toggled */
+    .nav-menu.responsive {
+        display: flex;
+    }
+
+    .nav-menu-btn {
+        display: block;
+        font-size: 28px;
+        cursor: pointer;
+        color: var(--nav-icon);
+    }
+}
+
 
 /*-----mode---*/
 .mode {
@@ -164,6 +195,7 @@ body.dark #sun {
 body.dark #moon {
     opacity: 0;
 }
+
 
 /*----Wrapper---*/
 .wrapper {
@@ -511,60 +543,82 @@ i {
 
 
 /*ai*/
-/*---filters---*/
+/*---Filters Section---*/
 .filters {
     margin: 20px 0;
     text-align: center;
 }
 
+/* Filter Buttons with Softer Purple Gradient */
 .filter-btn {
-    padding: 10px 15px;
+    padding: 12px 18px;
     margin: 5px;
     border: none;
-    background: #4caf50;
+    background: linear-gradient(135deg, #5a189a, #3c096c);
     color: white;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    border-radius: 6px;
     font-size: 16px;
-}
-
-.filter-btn:hover {
-    background: #45a049;
-    transform: scale(1.05);
-}
-
-.filter-btn.active {
-    background: #2e7d32;
     font-weight: bold;
 }
 
-/* Projects */
+/* Hover Effect */
+.filter-btn:hover {
+    background: linear-gradient(135deg, #4c138a, #2a0759);
+    transform: scale(1.05);
+}
+
+/* Active (Selected) Button Effect */
+.filter-btn.active {
+    background: linear-gradient(135deg, #3a0f72, #20043b);
+    font-weight: bold;
+    box-shadow: 0px 4px 12px rgba(58, 15, 114, 0.5);
+    transform: scale(1.1);
+    animation: buttonSelect 0.3s ease-in-out;
+}
+
+/* Animation for Filter Button Selection */
+@keyframes buttonSelect {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/*---Projects Section---*/
 .project-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    padding: 10px;
+    gap: 20px;
+    padding: 15px;
 }
 
 .project {
-    padding: 15px;
-    background: #f0f0f0;
+    padding: 20px;
+    background: linear-gradient(135deg, #d8b4fe, #a78bfa);
     width: 30%;
     text-align: center;
     display: block;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
     font-size: 18px;
     font-weight: bold;
+    color: #333;
 }
 
+/* Hover Effect on Projects */
 .project:hover {
     transform: translateY(-5px);
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
-    background: #e0e0e0;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, #c4a2fd, #8a67f9);
 }
 
 /* Responsive Design */
@@ -581,98 +635,134 @@ i {
 
     .filter-btn {
         width: 100%;
-        padding: 12px;
+        padding: 14px;
     }
 }
 
+/* Project Links */
 .project a {
     text-decoration: none;
-    color: #333;
+    color: #3a0ca3;
     font-weight: bold;
     font-size: 18px;
     display: block;
-    padding: 10px 0;
+    padding: 12px 0;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .project a:hover {
-    color: #2e7d32;
-    text-shadow: 1px 1px 8px rgba(46, 125, 50, 0.5);
+    color: #4a0fb0;
+    text-shadow: 1px 1px 10px rgba(74, 15, 176, 0.5);
 }
 
-/*--------contact box-----*/
+
+/*-------- Contact Box (Updated) -----*/
 .contact-info {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 0;
-    padding: 20px 40px;
+    text-align: center;
+    padding: 25px 40px;
     width: 100%;
-    height: 380px;
-    border: 2px solid #d7d7d7;
-    border-radius: 20px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    cursor: pointer;
-    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-    /* Soft gray gradient */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    max-width: 600px;
+    height: auto;
+    border: 2px solid rgba(135, 73, 242, 0.3); /* Subtle purple border */
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #f5f0ff, #d9c2ff); /* Soft purple gradient */
+    transition: all 0.3s ease;
 }
 
-/* Subtle animated glow effect */
+/* Subtle Glow Effect */
 .contact-info::before {
     content: "";
     position: absolute;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(135, 73, 242, 0.15) 10%, transparent 80%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(66, 42, 107, 0.2) 10%, transparent 80%);
     top: -50%;
     left: -50%;
     z-index: -1;
     transition: opacity 0.3s ease;
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 /* Hover Effect */
 .contact-info:hover {
     transform: scale(1.02);
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #d7b3ff, #8749f2);
-    /* Purple gradient */
+    box-shadow: 5px 5px 20px rgba(135, 73, 242, 0.4);
+    background: linear-gradient(135deg, #c49aff, #8b5cf6); /* Darker Purple Gradient */
 }
 
-/* Text Styling */
-.contact-info>h2 {
-    color: #333;
-    margin-bottom: 20px;
+/* Heading Styling */
+.contact-info h2 {
+    color: #5a3db9;
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-bottom: 15px;
     transition: color 0.3s ease;
 }
 
-.contact-info:hover>h2 {
+.contact-info:hover h2 {
     color: #fff;
 }
 
-.contact-info>p {
+/* Text & Icon Styling */
+.contact-info p {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #444;
-    margin-block: 5px;
+    color: #333;
     font-size: 16px;
+    font-weight: 500;
+    margin-block: 8px;
     transition: color 0.3s ease;
 }
 
-.contact-info:hover>p {
+.contact-info:hover p {
     color: #fff;
 }
 
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .contact-info {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .contact-info h2 {
+        font-size: 20px;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .contact-info h2 {
+        font-size: 18px;
+    }
+
+    .contact-info p {
+        font-size: 13px;
+    }
+}
+
+
 /*---contact form----*/
+
 .form-control {
     display: flex;
     flex-direction: column;
@@ -893,9 +983,10 @@ footer {
     text-align: center;
     padding: 40px 20px;
     position: relative;
-    background: linear-gradient(135deg, #f8f8f8, #e0e0e0); /* Soft gradient */
+    background: linear-gradient(135deg, #a27be0, #6b5dd3); /* Soft purple gradient */
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensures buttons stay inside */
 }
 
 /* Testimonial Container */
@@ -926,22 +1017,21 @@ footer {
 
 /* Ensure the first testimonial is visible */
 .testimonial:first-child {
-    position: relative; /* Keep it in flow */
+    position: relative;
     opacity: 1;
 }
 
 /* Active Testimonial */
 .testimonial.active {
     opacity: 1;
-    transform: scale(1.05); /* Subtle zoom effect */
+    transform: scale(1.05);
 }
 
 /* Navigation Buttons */
 #prevBtn, #nextBtn {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #333;
+    top: 40%;
+    background: #5a42c7; /* Darker purple */
     color: white;
     border: none;
     padding: 12px 15px;
@@ -953,12 +1043,18 @@ footer {
 }
 
 #prevBtn:hover, #nextBtn:hover {
-    background: #555;
+    background: #4b37aa; /* Slightly darker shade on hover */
     transform: scale(1.1);
 }
 
-#prevBtn { left: 20px; }
-#nextBtn { right: 20px; }
+/* Button Positions: Inside the Section */
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
